@@ -46,7 +46,7 @@ document.getElementById("toggle-bookmark-reminder").addEventListener("click", ()
         const email = "jchdnjc@gmail.com"; 
         const newTab = { title, url, reminderDate, reminderTime, reminderOption };
 
-        fetch("http://127.0.0.1:5000/schedule-email", {
+        fetch("https://ginko-backend.vercel.app/schedule-email", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
