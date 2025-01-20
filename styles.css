@@ -5,11 +5,17 @@
 * {
   font-family: 'Cormorant Garamond', serif;
 }
-
+#popup {
+    min-width: 400px; /* Set the minimum width */
+  }
 body {
   padding: 20px;
 }
-
+.center-button {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
 button {
   padding: 10px 20px;
   font-size: 16px;
@@ -41,7 +47,7 @@ li {
 }
 
 #bookmark-reminder-container {
-  display: none; /* Hidden by default */
+  display: none; 
   margin-top: 20px;
 }
 
@@ -53,3 +59,32 @@ li {
 #back-button:hover {
   background-color: #d32f2f;
 }
+#tab-list-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  #tab-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+  #tab-list li {
+    flex: 1 1 100%; /* Each tab item takes up the full width */
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  #tab-list button {
+    margin-left: 10px;
+  }

@@ -1,23 +1,43 @@
-<html>
-  <head>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GINKO</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="popup">
     <h1>GINKO</h1>
-    <button id="toggle-bookmark-reminder">Create Bookmark Reminder</button>
+    <div class="center-button">
+      <button id="toggle-bookmark-reminder">Create Bookmark Reminder</button>
+    </div>
 
-    <div id="bookmark-reminder-container">
+    <div id="bookmark-reminder-container" style="display: none;">
       <button id="back-button">Back</button>
       <button id="get-tab-info">Get Current Tab Info</button>
       <br>
       <label for="tab-title">Edit Title:</label>
       <input id="tab-title" type="text" placeholder="Tab Title">
+      <br>
+      <label for="reminder-date">Reminder Date:</label>
+      <input type="date" id="reminder-date">
+      <br>
+      <label for="reminder-time">Reminder Time (optional):</label>
+      <input type="time" id="reminder-time">
+      <br>
+      <label for="reminder-option">Reminder Option:</label>
+      <select id="reminder-option">
+        <option value="email">Email</option>
+      </select>
+      <br>
       <button id="save-tab">Save Tab</button>
       <h2>Collected Tabs:</h2>
-      <ul id="tab-list"></ul>
+      <div id="tab-list-container">
+        <ul id="tab-list"></ul>
+      </div>
     </div>
-
-    <script src="main.js"></script>
-  </body>
+  </div>
+  <script src="main.js"></script>
+</body>
 </html>

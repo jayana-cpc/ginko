@@ -1,35 +1,28 @@
-// Toggle the "Create Bookmark Reminder" feature
 document.getElementById("toggle-bookmark-reminder").addEventListener("click", () => {
     const toggleButton = document.getElementById("toggle-bookmark-reminder");
     const container = document.getElementById("bookmark-reminder-container");
   
-    // Hide the main button and show the feature container
     toggleButton.style.display = "none";
     container.style.display = "block";
   });
   
-  // Handle the "Back" button
   document.getElementById("back-button").addEventListener("click", () => {
     const toggleButton = document.getElementById("toggle-bookmark-reminder");
     const container = document.getElementById("bookmark-reminder-container");
   
-    // Show the main button and hide the feature container
     toggleButton.style.display = "inline-block";
     container.style.display = "none";
   });
   
-  // Load collected tabs on popup open
   document.addEventListener("DOMContentLoaded", () => {
     chrome.storage.local.get("collectedTabs", (data) => {
-      const tabList = data.collectedTabs || [];
-      tabList.forEach((tab) => addTabToUI(tab.title, tab.url));
+      collectedTabs = data.collectedTabs || [];
+      collectedTabs.forEach((tab) => addTabToUI(tab.title, tab.url, tab.reminderDate, tab.reminderTime, tab.reminderOption));
     });
   });
   
-  // Array to keep tabs in memory during session
   let collectedTabs = [];
   
-  // Event listener to get current tab info
   document.getElementById("get-tab-info").addEventListener("click", () => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       if (tabs.length > 0) {
@@ -42,39 +35,73 @@ document.getElementById("toggle-bookmark-reminder").addEventListener("click", ()
     });
   });
   
-  // Event listener to save tab info
   document.getElementById("save-tab").addEventListener("click", () => {
     const title = document.getElementById("tab-title").value;
     const url = document.getElementById("get-tab-info").dataset.url;
-  
-    if (title && url) {
-      // Add tab to the local array and UI
-      const newTab = { title, url };
-      collectedTabs.push(newTab);
-      addTabToUI(title, url);
-  
-      // Save to chrome.storage.local
-      chrome.storage.local.set({ collectedTabs }, () => {
-        console.log("Tab saved:", newTab);
-      });
-  
-      // Clear the input for the next tab
-      document.getElementById("tab-title").value = "";
+    const reminderDate = document.getElementById("reminder-date").value;
+    const reminderTime = document.getElementById("reminder-time").value;
+    const reminderOption = document.getElementById("reminder-option").value;
+
+    if (title && url && reminderDate && reminderOption) {
+        const email = "jchdnjc@gmail.com"; 
+        const newTab = { title, url, reminderDate, reminderTime, reminderOption };
+
+        fetch("http://127.0.0.1:5000/schedule-email", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                title,
+                url,
+                reminderDate,
+                reminderTime,
+                email, 
+            }),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            if (data.message === "Email scheduled") {
+                console.log("Email successfully scheduled.");
+                alert("Reminder has been scheduled!");
+            } else {
+                console.error("Failed to schedule email:", data.error);
+                alert("Failed to schedule the reminder.");
+            }
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+            alert("An error occurred while scheduling the reminder.");
+        });
+
+        collectedTabs.push(newTab);
+        addTabToUI(title, url, reminderDate, reminderTime, reminderOption);
+        chrome.storage.local.set({ collectedTabs });
     } else {
-      alert("No tab info to save.");
+        alert("Please fill in all required fields.");
     }
-  });
+});
+
   
-  // Add a tab to the UI list
-  function addTabToUI(title, url) {
+  function addTabToUI(title, url, reminderDate, reminderTime, reminderOption) {
     const tabList = document.getElementById("tab-list");
-    const listItem = document.createElement("li");
-    listItem.innerHTML = `<strong>${title}</strong> - <a href="${url}" target="_blank">${url}</a>`;
-    tabList.appendChild(listItem);
+    const tabItem = document.createElement("li");
+    tabItem.textContent = `${title} - ${url} - ${reminderDate} ${reminderTime ? reminderTime : ''} - ${reminderOption}`;
+  
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", () => {
+      removeTabFromUI(tabItem, title, url);
+    });
+  
+    tabItem.appendChild(deleteButton);
+    tabList.appendChild(tabItem);
   }
   
-  // Sync in-memory tabs with chrome.storage.local
-  chrome.storage.local.get("collectedTabs", (data) => {
-    collectedTabs = data.collectedTabs || [];
-  });
+  function removeTabFromUI(tabItem, title, url) {
+    const tabList = document.getElementById("tab-list");
+    tabList.removeChild(tabItem);
   
+    collectedTabs = collectedTabs.filter(tab => tab.title !== title || tab.url !== url);
+    chrome.storage.local.set({ collectedTabs });
+  }

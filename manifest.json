@@ -3,7 +3,14 @@
   "description": "by Katherine Lee & Jayana Nanayakkara",
   "version": "1.0",
   "manifest_version": 3,
-  "permissions": ["tabs", "storage"],
+  "permissions": [
+    "tabs",
+    "storage",
+    "http://127.0.0.1:5000/*"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:5000/*"
+  ],
   "action": {
     "default_popup": "main.html",
     "default_icon": "ginko_icon.png"
