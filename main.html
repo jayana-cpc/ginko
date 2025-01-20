@@ -1,5 +1,23 @@
 <html>
+  <head>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
   <body>
     <h1>GINKO</h1>
+    <button id="toggle-bookmark-reminder">Create Bookmark Reminder</button>
+
+    <div id="bookmark-reminder-container">
+      <button id="back-button">Back</button>
+      <button id="get-tab-info">Get Current Tab Info</button>
+      <br>
+      <label for="tab-title">Edit Title:</label>
+      <input id="tab-title" type="text" placeholder="Tab Title">
+      <button id="save-tab">Save Tab</button>
+      <h2>Collected Tabs:</h2>
+      <ul id="tab-list"></ul>
+    </div>
+
+    <script src="main.js"></script>
   </body>
 </html>

@@ -1,0 +1,55 @@
+/* Import the Cormorant Garamond font */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&display=swap');
+
+/* Apply the font globally */
+* {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+body {
+  padding: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+input {
+  padding: 8px;
+  font-size: 16px;
+  margin: 10px 0;
+  width: calc(100% - 20px);
+  box-sizing: border-box;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin: 5px 0;
+}
+
+#bookmark-reminder-container {
+  display: none; /* Hidden by default */
+  margin-top: 20px;
+}
+
+#back-button {
+  background-color: #f44336;
+  margin-top: 10px;
+}
+
+#back-button:hover {
+  background-color: #d32f2f;
+}
