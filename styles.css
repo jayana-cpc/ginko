@@ -5,17 +5,44 @@
 * {
   font-family: 'Cormorant Garamond', serif;
 }
+
+h1{
+  text-align: center;
+  font-size: 600%;
+  color: white;
+  font-family: Georgia;
+  margin-top: 0.1%;
+  margin-bottom: 0.1%;
+}
+
+h2{
+  text-align: center;
+  color: white; 
+  margin-top: 0.1%
+}
+
+
 #popup {
     min-width: 400px; /* Set the minimum width */
   }
 body {
   padding: 20px;
-  background: radial-gradient(circle at 20% 30%, #ffd09a, transparent 50%),
-              radial-gradient(circle at 95% 20%, #b7e6ec, transparent 50%),
-              radial-gradient(circle at 70% 80%, #eb8dd2, transparent 50%),
-              radial-gradient(circle at 30% 60%, #836abe, transparent 50%);
+  background: radial-gradient(circle at 20% 30%, #d7882c, transparent 50%),
+              radial-gradient(circle at 95% 20%, #36bacc, transparent 50%),
+              radial-gradient(circle at 70% 80%, #df27ae, transparent 50%),
+              radial-gradient(circle at 30% 60%, #5622cf, transparent 50%);
+              border: 1.5em solid #15183b;
   background-blend-mode: screen;
 }
+
+
+.button-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 20px;
+}
+
 .center-button {
     display: flex;
     justify-content: center;
@@ -26,13 +53,13 @@ button {
   font-size: 16px;
   cursor: pointer;
   border: none;
-  background-color: #4CAF50;
+  background-color: #15183b;
   color: white;
   border-radius: 5px;
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: #15183b;
 }
 
 input {
