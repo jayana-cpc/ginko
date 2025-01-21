@@ -1,18 +1,24 @@
 document.getElementById("toggle-bookmark-reminder").addEventListener("click", () => {
     const toggleButton = document.getElementById("toggle-bookmark-reminder");
+    const viewJournalButton = document.getElementById("view-journal");
     const container = document.getElementById("bookmark-reminder-container");
   
     toggleButton.style.display = "none";
     container.style.display = "block";
+    viewJournalButton.style.display = "none";
   });
+  
   
   document.getElementById("back-button").addEventListener("click", () => {
     const toggleButton = document.getElementById("toggle-bookmark-reminder");
+    const viewJournalButton = document.getElementById("view-journal");
     const container = document.getElementById("bookmark-reminder-container");
   
     toggleButton.style.display = "inline-block";
+    viewJournalButton.style.display = "inline-block";
     container.style.display = "none";
   });
+
   
   document.addEventListener("DOMContentLoaded", () => {
     chrome.storage.local.get("collectedTabs", (data) => {
