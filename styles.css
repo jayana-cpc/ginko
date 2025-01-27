@@ -1,23 +1,23 @@
 /* Import the Cormorant Garamond font */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400&display=swap');
-
+@import url('https://db.onlinewebfonts.com/c/9b5a021a701bf8f307396e7d2500fec2?family=ZT+Formom'); 
 /* Apply the font globally */
 * {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'ZT Formom';
 }
 
 h1{
   text-align: center;
   font-size: 600%;
-  color: #15183b;
-  font-family: Georgia;
+  color: #15264F;
+  font-family: 'ZT Formom';
   margin-top: 0.1%;
   margin-bottom: 0.1%;
 }
 
 h2{
   text-align: center;
-  color: #15183b; 
+  color: #15264F; 
   margin-top: 0.1%
 }
 
@@ -27,11 +27,12 @@ h2{
   }
 body {
   padding: 20px;
-  background: radial-gradient(circle at 20% 30%, #ddc4a7, transparent 50%),
+  background-color: #E8E3DD;
+  /* background: radial-gradient(circle at 20% 30%, #ddc4a7, transparent 50%),
               radial-gradient(circle at 95% 20%, #96d5de, transparent 50%),
               radial-gradient(circle at 70% 80%, #d49fc6, transparent 50%),
               radial-gradient(circle at 30% 60%, #bba7e8, transparent 50%);
-              border: 0.5em dashed #15183b;
+              border: 0.5em dashed #15183b; */
 }
 
 
@@ -119,3 +120,4 @@ li {
   #tab-list button {
     margin-left: 10px;
   }
+
