@@ -9,21 +9,15 @@
 <body>
   <div id="popup">
     <h1>°⋆kathe⋆°</h1>
-
-    <h2>
-       your digital collection for work made easy
-    </h2>
+    <h2>Your digital collection for work made easy</h2>
 
     <div class="button-container">
-
-    <div class="left-button">
-      <button id="toggle-bookmark-reminder">Create Bookmark Reminder</button>
-    </div>
-
-    <div class="right-button">
-      <button id="view-journal">View Journal</button>
-    </div>
-
+      <div class="left-button">
+        <button id="toggle-bookmark-reminder">Create Bookmark Reminder</button>
+      </div>
+      <div class="right-button">
+        <button id="view-journal">View Journal</button>
+      </div>
     </div>
 
     <div id="bookmark-reminder-container" style="display: none;">
@@ -52,6 +46,13 @@
     </div>
   </div>
 
+  <div id="activity-container" style="display: none;">
+    <h1>Tracked Websites</h1>
+    <ul id="journal-list"></ul>
+    <button id="stop-tracking">Stop Tracking</button>
+    <button id="back-to-home">Back</button>
+  </div>
+  
   <script src="main.js"></script>
 </body>
 </html>
